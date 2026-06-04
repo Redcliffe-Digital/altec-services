@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — clinical navy + teal */
+  --color-navy-950: #061f30;
+  --color-navy-900: #082c44;
+  --color-navy-800: #0b3c5d;
+  --color-navy-700: #0f4d73;
+  --color-navy-600: #145d89;
+  --color-navy-500: #1a76a8;
+
+  --color-teal-600: #0e7c93;
+  --color-teal-500: #14a0b8;
+  --color-teal-400: #2bbdd4;
+  --color-teal-300: #7fdce8;
+
+  --color-ink: #15242e;
+  --color-muted: #5a6b76;
+  --color-line: #e2e9ee;
+  --color-mist: #f3f7fa;
+  --color-mist-200: #e8f0f4;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --radius-card: 16px;
+
+  --shadow-soft: 0 1px 2px rgba(8, 44, 68, 0.04),
+    0 8px 24px -12px rgba(8, 44, 68, 0.18);
+  --shadow-card: 0 1px 3px rgba(8, 44, 68, 0.06),
+    0 18px 40px -22px rgba(8, 44, 68, 0.28);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Accessible focus ring */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-teal-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Centered content column */
+.container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem; /* 1280px */
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 2rem;
+  }
+}
+
+/* Subtle entrance animation */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-rise {
+    animation: none;
+  }
+}
