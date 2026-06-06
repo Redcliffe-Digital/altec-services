@@ -139,7 +139,11 @@ export function Footer() {
             <li>
               <span className="flex items-start gap-3 text-white/70">
                 <MapPinIcon className="mt-0.5 h-5 w-5 shrink-0 text-teal-400" />
-                {site.address.city}, {site.address.country}
+                <span>
+                  {site.address.line1}
+                  <br />
+                  {site.address.city}, {site.address.country}
+                </span>
               </span>
             </li>
           </ul>

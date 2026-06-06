@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/data/site";
-import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/icons";
+import {
+  MailIcon,
+  MapPinIcon,
+  PhoneIcon,
+  WhatsAppIcon,
+} from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -28,6 +33,12 @@ const contactMethods = [
     label: "WhatsApp",
     value: "Message us directly",
     href: site.whatsappHref,
+  },
+  {
+    icon: MapPinIcon,
+    label: "Postal address",
+    value: site.address.full,
+    href: undefined,
   },
 ];
 
@@ -67,28 +78,39 @@ export default function ContactPage() {
             <ul className="mt-6 space-y-4">
               {contactMethods.map((m) => {
                 const Icon = m.icon;
-                const external = m.href.startsWith("http");
+                const external = m.href?.startsWith("http");
+                const inner = (
+                  <>
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-mist text-teal-600 transition-colors group-hover:bg-teal-500 group-hover:text-white">
+                      <Icon className="h-6 w-6" />
+                    </span>
+                    <span>
+                      <span className="block text-sm font-semibold uppercase tracking-wider text-muted">
+                        {m.label}
+                      </span>
+                      <span className="mt-0.5 block font-semibold text-navy-900">
+                        {m.value}
+                      </span>
+                    </span>
+                  </>
+                );
                 return (
                   <li key={m.label}>
-                    <a
-                      href={m.href}
-                      {...(external
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
-                      className="group flex items-start gap-4 rounded-[var(--radius-card)] border border-line bg-white p-5 shadow-soft transition-colors hover:border-teal-400/60"
-                    >
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-mist text-teal-600 transition-colors group-hover:bg-teal-500 group-hover:text-white">
-                        <Icon className="h-6 w-6" />
-                      </span>
-                      <span>
-                        <span className="block text-sm font-semibold uppercase tracking-wider text-muted">
-                          {m.label}
-                        </span>
-                        <span className="mt-0.5 block font-semibold text-navy-900">
-                          {m.value}
-                        </span>
-                      </span>
-                    </a>
+                    {m.href ? (
+                      <a
+                        href={m.href}
+                        {...(external
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                        className="group flex items-start gap-4 rounded-[var(--radius-card)] border border-line bg-white p-5 shadow-soft transition-colors hover:border-teal-400/60"
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div className="group flex items-start gap-4 rounded-[var(--radius-card)] border border-line bg-white p-5 shadow-soft">
+                        {inner}
+                      </div>
+                    )}
                   </li>
                 );
               })}
