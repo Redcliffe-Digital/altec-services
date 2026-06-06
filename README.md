@@ -49,46 +49,59 @@ Until an ID is set, the form shows a friendly "not yet configured" message inste
 
 ## Deployment
 
-### Current: GitHub Pages
+### Production: one.com (live at https://www.altecservices.com)
 
-The site auto-deploys to GitHub Pages via `.github/workflows/deploy.yml` on every
-push to `main`. It builds a **static export** with a `/altec-services` base path
-(GitHub Pages serves the repo from a sub-folder).
+The site is hosted on the client's existing **one.com** plan, which serves static
+files over **SFTP** (no SSH on their plan). Deploy = build a static export, then
+upload the contents of `out/` to the web root.
 
-Live URL: https://redcliffe-digital.github.io/altec-services/
+**1. Build the static export (root paths, no sub-folder):**
 
-One-time setup in the repo on GitHub:
+```bash
+npm run build:static   # = STATIC_EXPORT=true next build  ->  ./out
+```
 
-1. **Settings → Pages → Build and deployment → Source: "GitHub Actions".**
-   (This is the key step — if Source is left on "Deploy from a branch" it just
-   serves the raw README, which is the bug we hit.)
-2. *(Optional, for the contact form)* **Settings → Secrets and variables →
-   Actions → New repository secret:** `NEXT_PUBLIC_FORMSPREE_ID` = your form ID.
-3. Push to `main` (or re-run the workflow from the **Actions** tab). Done.
+**2. Upload the contents of `out/` to the one.com web root** with any SFTP client
+(FileZilla, Cyberduck, etc.):
 
-The `GITHUB_PAGES=true` env var (set only in the workflow) is what switches
-`next.config.ts` into static-export + base-path mode. Local dev is unaffected.
+- Host: `ssh.czqswarko.service.one`  ·  Port: `22`  ·  User: `czqswarko_ssh`
+  (turn on **Allow SFTP access** in the one.com control panel; password is in the
+  client's one.com account — keep it out of this repo).
+- Web root: `/customers/d/7/5/czqswarko/webroots/www`
+  (both `altecservices.com` and `www.altecservices.com` resolve here).
+- Upload **everything inside `out/`** (including the `_next/` folder) into that
+  directory, overwriting `index.html` / `sitemap.xml`.
 
-### Reverting to Vercel (recommended for production / custom domain)
+DNS already points at one.com, so the new files go live immediately. A backup of
+the original One.com builder files was saved locally to
+`~/Developer/altec-onecom-backup/`.
 
-GitHub Pages can only serve a static site under a sub-path. To run as a full
-Next.js app at the domain root with `altecservices.com`:
+> Legacy files from the old builder site (`about.html`, `contact.html`,
+> `Services.html`, `sendmail.php`, `onewebmedia/`, `onewebstatic/`) still sit in
+> the web root. They're orphaned (the new nav uses `/about/`, `/services/`,
+> `/contact/`) and harmless, but can be deleted from the one.com File Manager or
+> an SFTP client for tidiness.
 
-1. Import the repo at [vercel.com/new](https://vercel.com/new) — it auto-detects
-   Next.js, no config needed. Because `GITHUB_PAGES` is **not** set on Vercel,
-   `next.config.ts` builds normally at `/` with no base path.
+### Alternative: Vercel (recommended if you ever leave one.com)
+
+To run as a full Next.js app at the domain root instead:
+
+1. Import the repo at [vercel.com/new](https://vercel.com/new) — auto-detects
+   Next.js, no config needed (`STATIC_EXPORT` isn't set on Vercel, so it builds
+   normally with image optimisation etc.).
 2. Add the `NEXT_PUBLIC_FORMSPREE_ID` environment variable in Vercel.
-3. Add the custom domain `altecservices.com` under Project → Settings → Domains
-   and point DNS as instructed.
-4. *(Optional)* Delete `.github/workflows/deploy.yml` and switch GitHub Pages off
-   so you're not deploying to two places.
+3. Add the custom domain `altecservices.com` and point DNS as instructed.
 
 > Update `site.url` in `src/data/site.ts` if the production domain changes — it
 > feeds canonical URLs, the sitemap and structured data.
 
-## Still to provide (placeholders in place)
+## Still to provide (nice-to-haves)
 
-- Real Formspree form ID.
-- Photography and any accreditation logos (e.g. IHEEM, UKAS) — currently the design uses iconography and gradients.
-- Confirmation of the About-page copy and exact service standards/wording before go-live (the original About page was offline, so this copy was written from the company's stated positioning).
+- Photography and any accreditation logos (e.g. IHEEM, UKAS) — currently the design uses the Altec logo, iconography and gradients.
+- Confirmation of the About-page copy and exact service standards/wording (the original About page was offline, so this copy was written from the company's stated positioning).
 - A branded favicon (currently the default).
+
+> The contact form is **live** — wired to Formspree (`xwvjvzzl`), delivering to
+> info@altecservices.com. The form ID is set as the default in
+> `src/components/ContactForm.tsx` and can be overridden via the
+> `NEXT_PUBLIC_FORMSPREE_ID` env var.

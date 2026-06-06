@@ -1,23 +1,21 @@
 import type { NextConfig } from "next";
 
-// GitHub Pages serves this repo from a sub-path (/altec-services) and can only
-// host static files, so we statically export and prefix asset/links with the
-// repo name. The GITHUB_PAGES env var is set only by the deploy workflow, so
-// local dev and any root-domain host (e.g. Vercel) build normally at "/".
+// Build modes, selected by env var:
 //
-// === To revert to Vercel (or any host serving at the domain root) ===
-// 1. Just deploy the repo to Vercel as-is — it ignores this whole block
-//    because GITHUB_PAGES is not set, so there's no basePath and it runs as a
-//    normal Next.js app (server features, image optimisation, etc.).
-// 2. Optionally delete `.github/workflows/deploy.yml` and turn off GitHub Pages.
-const isGithubPages = process.env.GITHUB_PAGES === "true";
-const repo = "altec-services";
+// 1. Default (no env)   -> normal Next.js app. Used by local dev (`npm run dev`)
+//                          and any server host such as Vercel. Serves at root.
+// 2. STATIC_EXPORT=true -> static export to ./out at the DOMAIN ROOT.
+//                          This is the production build for one.com.
+//                          Run it with `npm run build:static`.
+//
+// === Reverting to Vercel ===
+// Deploy the repo to Vercel as-is — STATIC_EXPORT isn't set there, so it runs as
+// a normal Next.js app at the root (server features, image optimisation, etc.).
+const isStaticExport = process.env.STATIC_EXPORT === "true";
 
-const nextConfig: NextConfig = isGithubPages
+const nextConfig: NextConfig = isStaticExport
   ? {
       output: "export",
-      basePath: `/${repo}`,
-      assetPrefix: `/${repo}/`,
       images: { unoptimized: true },
       trailingSlash: true,
     }
