@@ -2,12 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/data/site";
-import {
-  MailIcon,
-  MapPinIcon,
-  PhoneIcon,
-  WhatsAppIcon,
-} from "@/components/icons";
+import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -34,17 +29,7 @@ const contactMethods = [
     value: "Message us directly",
     href: site.whatsappHref,
   },
-  {
-    icon: MapPinIcon,
-    label: "Visit",
-    value: site.address.full,
-    href: site.address.mapsHref,
-  },
 ];
-
-const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-  site.address.full,
-)}&output=embed`;
 
 export default function ContactPage() {
   return (
@@ -108,18 +93,6 @@ export default function ContactPage() {
                 );
               })}
             </ul>
-
-            <div className="mt-6 overflow-hidden rounded-[var(--radius-card)] border border-line shadow-soft">
-              <iframe
-                title={`Map showing ${site.address.full}`}
-                src={mapSrc}
-                width="100%"
-                height="280"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="block"
-              />
-            </div>
           </aside>
         </div>
       </section>

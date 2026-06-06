@@ -56,7 +56,6 @@ export default function RootLayout({
     areaServed: "GB",
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.address.line1,
       addressLocality: site.address.city,
       addressCountry: "GB",
     },
