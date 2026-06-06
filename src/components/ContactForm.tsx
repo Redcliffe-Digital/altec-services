@@ -4,7 +4,9 @@ import { useState, type FormEvent } from "react";
 import { services } from "@/data/services";
 import { ArrowIcon, CheckIcon } from "@/components/icons";
 
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "";
+// Public by design (it ends up in the client bundle). The env var allows a
+// per-environment override; the fallback is the live Altec Formspree form.
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID || "xwvjvzzl";
 const ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
 
 type Status = "idle" | "submitting" | "success" | "error";
