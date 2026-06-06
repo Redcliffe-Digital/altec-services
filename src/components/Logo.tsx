@@ -12,14 +12,14 @@ export function Logo({
   return (
     <Link
       href="/"
-      aria-label="Altec Services — home"
+      aria-label="Altec Services home"
       className={["inline-flex items-center", className]
         .filter(Boolean)
         .join(" ")}
     >
       <Image
         src={logo}
-        alt="Altec — Analytical &amp; Technical Services"
+        alt="Altec, Analytical &amp; Technical Services"
         priority
         className={[
           "h-10 w-auto",

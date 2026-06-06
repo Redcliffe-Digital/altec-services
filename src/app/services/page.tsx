@@ -17,7 +17,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Our services"
         title="Specialist validation & verification services"
-        description="Independent testing across three critical areas of healthcare compliance — delivered to recognised UK and international standards."
+        description="Independent testing across three critical areas of healthcare compliance, delivered to recognised UK and international standards."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       />
 
@@ -33,7 +33,7 @@ export default function ServicesPage() {
 
       <CTASection
         title="Not sure which service you need?"
-        description="Tell us about your site and systems — we'll advise on the right testing and verification approach."
+        description="Tell us about your site and systems, and we'll advise on the right testing and verification approach."
       />
     </>
   );

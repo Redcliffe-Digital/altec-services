@@ -20,7 +20,7 @@ const values = [
   {
     icon: IndependentIcon,
     title: "Independence",
-    body: "We test and verify only — we have no commercial interest in the systems we assess, so our findings are impartial.",
+    body: "We test and verify only; we have no commercial interest in the systems we assess, so our findings are impartial.",
   },
   {
     icon: ShieldCheckIcon,
@@ -40,7 +40,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About us"
         title="An independent partner in healthcare compliance"
-        description="Altec Services provides impartial validation and verification for the NHS and private healthcare — helping facilities demonstrate that critical systems are safe, compliant and fit for purpose."
+        description="Altec Services provides impartial validation and verification for the NHS and private healthcare, helping facilities demonstrate that critical systems are safe, compliant and fit for purpose."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
 
@@ -64,7 +64,7 @@ export default function AboutPage() {
               <p>
                 Because we don&rsquo;t install, supply or maintain the systems we
                 assess, our verification is genuinely impartial. Our clients
-                value that independence — it means our reports reflect the true
+                value that independence: it means our reports reflect the true
                 performance of their systems and stand up to scrutiny from
                 regulators, authorising engineers and auditors alike.
               </p>
@@ -83,7 +83,7 @@ export default function AboutPage() {
               </h2>
               <ul className="mt-5 space-y-4">
                 {[
-                  "Genuinely independent — testing and verification only",
+                  "Genuinely independent: testing and verification only",
                   "Specialists in HTM, ISO and COSHH compliance",
                   "Work scheduled around live clinical environments",
                   "Clear, audit-ready certification on every project",

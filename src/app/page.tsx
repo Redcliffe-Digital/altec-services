@@ -18,7 +18,7 @@ const trust = [
   {
     icon: IndependentIcon,
     title: "Genuinely independent",
-    body: "We don't install or supply systems — so our testing and verification is impartial and conflict-free.",
+    body: "We don't install or supply systems, so our testing and verification is impartial and conflict-free.",
   },
   {
     icon: ShieldCheckIcon,
@@ -78,7 +78,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
               Quality control of medical gas pipelines, cleanroom validation and
-              anaesthetic gas exposure monitoring — delivered to HTM, ISO and
+              anaesthetic gas exposure monitoring, all delivered to HTM, ISO and
               COSHH standards by specialists who put patient safety first.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -157,7 +157,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Why Altec Services"
               title="The independent assurance your facility relies on"
-              description="As a specialist validation and verification provider, our only job is to confirm your systems are safe and compliant — with no commercial interest in the equipment itself."
+              description="As a specialist validation and verification provider, our only job is to confirm your systems are safe and compliant, with no commercial interest in the equipment itself."
             />
             <ButtonLink href="/about" variant="ghost" className="mt-8">
               More about us
@@ -193,7 +193,7 @@ export default function HomePage() {
         <SectionHeading
           align="center"
           eyebrow="How we work"
-          title="A clear, methodical process — every time"
+          title="A clear, methodical process, every time"
         />
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {[

@@ -78,7 +78,7 @@ export function ContactForm() {
           <CheckIcon className="h-7 w-7" />
         </span>
         <h3 className="mt-5 text-xl font-bold text-navy-900">
-          Thank you — your enquiry has been sent.
+          Thank you. Your enquiry has been sent.
         </h3>
         <p className="mt-2 max-w-md text-muted">
           A member of the Altec Services team will be in touch shortly. For

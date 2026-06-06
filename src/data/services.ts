@@ -18,7 +18,7 @@ export const services: Service[] = [
     shortTitle: "Medical Gas Pipelines",
     tagline: "Patient safety is paramount.",
     summary:
-      "Independent quality control testing and commissioning of medical, dental and laboratory gas pipeline systems — confirming the right gas, at the right purity, pressure and flow, at every terminal.",
+      "Independent quality control testing and commissioning of medical, dental and laboratory gas pipeline systems, confirming the right gas, at the right purity, pressure and flow, at every terminal.",
     icon: "gas",
     standards: [
       "HTM 02-01",
@@ -27,7 +27,7 @@ export const services: Service[] = [
       "European Pharmacopoeia",
     ],
     intro:
-      "Medical gas pipeline systems (MGPS) deliver life-critical supplies to clinical areas. As an independent Quality Controller we verify the identity, quality, adequacy and continuity of supply of new installations and modifications — providing the assurance that clinical teams and estates departments rely on.",
+      "Medical gas pipeline systems (MGPS) deliver life-critical supplies to clinical areas. As an independent Quality Controller we verify the identity, quality, adequacy and continuity of supply of new installations and modifications, providing the assurance that clinical teams and estates departments rely on.",
     scope: [
       {
         title: "Identity & cross-connection testing",
@@ -74,7 +74,7 @@ export const services: Service[] = [
     shortTitle: "Cleanroom Validation",
     tagline: "Controlled environments, verified performance.",
     summary:
-      "Validation and routine testing of cleanrooms and clean air devices — filter integrity, air velocity, pressure cascades and microbial monitoring — to keep critical environments in compliance.",
+      "Validation and routine testing of cleanrooms and clean air devices, covering filter integrity, air velocity, pressure cascades and microbial monitoring, to keep critical environments in compliance.",
     icon: "cleanroom",
     standards: ["BS EN ISO 14644", "EU cGMP"],
     intro:
@@ -125,7 +125,7 @@ export const services: Service[] = [
     shortTitle: "Anaesthetic Gas Exposure",
     tagline: "Protecting the people who care for patients.",
     summary:
-      "Personal exposure monitoring for anaesthetic gases and testing of control measures — protecting theatre and recovery staff and demonstrating COSHH compliance.",
+      "Personal exposure monitoring for anaesthetic gases and testing of control measures, protecting theatre and recovery staff and demonstrating COSHH compliance.",
     icon: "anaesthetic",
     standards: ["COSHH", "HSE EH40 Workplace Exposure Limits"],
     intro:
